@@ -2,21 +2,24 @@
 import { useEffect, useState } from "react"
 import { fFirestore } from "../firebase/firebaseConfig"
 
-const useFirestore = () => {
+const useFirestore = (collection) => {
   const [docs, setDocs] = useState([]);
 
   useEffect(() => {
-    const collectionRef = fFirestore.collection("images");
-    const docs = []
-    collectionRef.onSnapshot(snapshot => { // for real time update;
-      snapshot.forEach(doc => {
-        docs.push(doc.data());
-        setDocs(docs)
-      })
-    })
-  }, []);
 
-  return {docs}
+    const unsub = fFirestore.collection(collection).orderBy("createdAt", "desc").onSnapshot(snap => { // for real time update
+      const documents = []; // this is important to real time update, it is making the render happen by making new array reference
+      snap.forEach(doc => {
+        documents.push({ ...doc.data(), id: doc.id });
+      });
+      setDocs(documents);
+    });
+
+    return () => unsub(); // cleanup function
+
+  }, [collection]);
+
+  return { docs }
 }
 
 export default useFirestore;

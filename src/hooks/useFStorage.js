@@ -38,10 +38,9 @@ const useFStorage = (file) => {
           imageUrl: url,
           createdAt
         }).then(() => {
-          console.log("collection Created");
+          console.log("Image is saved to database!");
         })
 
-        console.log(`Upload Completed to the firebase storage ant the url is: ${url}`);
       }
     )
 
