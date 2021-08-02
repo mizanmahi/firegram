@@ -22,7 +22,10 @@ const fStorage = firebase.storage();
 // Initialize firestore
 const fFirestore = firebase.firestore();
 
-export {fStorage, fFirestore}; // exporting for further use
+// creating time stamp by firebase
+const timestamp = firebase.firestore.FieldValue.serverTimestamp;
+
+export {fStorage, fFirestore, timestamp}; // exporting for further use
 
 
 // Project number: 120603284317 for this project

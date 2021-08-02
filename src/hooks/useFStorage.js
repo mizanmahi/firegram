@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { fStorage } from "../firebase/firebaseConfig";
+import { fStorage, fFirestore, timestamp } from "../firebase/firebaseConfig";
 
 const useFStorage = (file) => {
   const [url, setUrl] = useState(null);
@@ -30,6 +30,17 @@ const useFStorage = (file) => {
         const url = await storageRef.getDownloadURL();
         setUrl(url);
         setError(null)
+
+        const collectionRef = fFirestore.collection("images");
+        const createdAt = timestamp();
+
+        collectionRef.add({
+          imageUrl: url,
+          createdAt
+        }).then(() => {
+          console.log("collection Created");
+        })
+
         console.log(`Upload Completed to the firebase storage ant the url is: ${url}`);
       }
     )
