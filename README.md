@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
--See Live Here: [firegram](https://firegram-by-mahi.netlify.app/)
+- See Live Here: [firegram](https://firegram-by-mahi.netlify.app/)
 
 ## Available Scripts
 
