@@ -10,15 +10,16 @@ const UploadForm = () => {
 
 
    const changeHandler = (e) => {
+
       const selectedFile = e.target.files[0];
       const allowedimageTypes = ["image/png", "image/jpeg"];
-
+      
       if (selectedFile && allowedimageTypes.includes(selectedFile.type)) {
          setFile(selectedFile);
          setError(null);
       } else {
          setFile(null);
-         setError("Something Went Wrong! Select an image (jpeg or png)");
+         setError("Something Went Wrong! Select An Image (jpeg or png)!");
       }
    };
 
@@ -31,7 +32,7 @@ const UploadForm = () => {
             </span>
          </label>
          <div className="output">
-            {error && <div>{error}</div>}
+            {error && <div className="error">{error}</div>}
             {file && <div>{file.name}</div>}
             {file && <ProgressBar file={file} setFile={setFile} />}
          </div>

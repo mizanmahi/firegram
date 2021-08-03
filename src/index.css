@@ -86,6 +86,7 @@ label:hover{
   /* padding controls height, will always be perfectly square regardless of width */
   position: relative;
   opacity: 0.8;
+  cursor: pointer;
 }
 .img-wrap img{
   min-width: 100%;
@@ -94,7 +95,46 @@ label:hover{
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 500;
 }
 
+.dlt-btn {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  cursor: pointer;
+  height: 2rem;
+  width: 2rem;
+}
+
+.dlt-btn svg {
+  color: var(--primary);
+  transition: all .3s;
+  opacity: .8;
+}
+
+.dlt-btn:hover svg {
+  color: var(--error);
+  transform: translateY(-2px);
+  opacity: 1;
+}
 
 /* modal styles */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, .5)
+}
+
+.backdrop img {
+  display: block;
+  margin: 4rem auto;
+  max-width: 60%;
+  max-height: 80%;
+  border: 3px solid #fff;
+}
+

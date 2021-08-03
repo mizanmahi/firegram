@@ -9,7 +9,7 @@ const useFStorage = (file) => {
 
   useEffect(() => {
     //In order to upload or download files, delete files, or get or update metadata, must create a reference to the file you want to operate on
-    const storageRef = fStorage.ref(file.name);
+    const storageRef = fStorage.ref(file.name); 
 
     const uploadTask = storageRef.put(file); // this is asynchronus 
 
@@ -36,9 +36,10 @@ const useFStorage = (file) => {
 
         collectionRef.add({
           imageUrl: url,
-          createdAt
+          createdAt,
+          name: file.name
         }).then(() => {
-          console.log("Image is saved to database!");
+          console.log("Image is saved to firebase storage!");
         })
 
       }
